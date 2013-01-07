@@ -6,6 +6,9 @@ on fs
     mount ext3 /dev/block/mmcblk1p24 /cache nosuid nodev noatime nodiratime barrier=0
     mount ext3 /dev/block/mmcblk1p25 /data nosuid nodev noatime nodiratime barrier=0
 
+    setprop ro.squadzone.build 1
+    setprop persist.sys.gmaps_hack 1
+
 on post-fs
 
 # Backward compatibility
