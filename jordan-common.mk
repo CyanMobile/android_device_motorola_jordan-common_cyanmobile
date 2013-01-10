@@ -97,14 +97,14 @@ PRODUCT_PACKAGES += \
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
 	librs_jni \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        MagicSmokeWallpapers \
-        VisualizationWallpapers
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	MagicSmokeWallpapers \
+	VisualizationWallpapers
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
-        packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 # for jpeg hw encoder/decoder
 # PRODUCT_PACKAGES += libskiahw libOMX.TI.JPEG.Encoder libOMX.TI.JPEG.decoder
@@ -122,11 +122,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += $(shell test -d device/motorola/jordan-common/modules && \
 	find device/motorola/jordan-common/modules -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
-
-# Prebuilt boot.img
-LOCAL_KERNEL := device/motorola/jordan-common/kernel
-PRODUCT_COPY_FILES += \
-	$(LOCAL_KERNEL):kernel
 
 # Blobs
 $(call inherit-product, device/motorola/jordan-common/jordan-common-blobs.mk)
