@@ -376,4 +376,6 @@
     <bool name="cm_default_power_menu_back">true</bool>
 
     <bool name="cm_default_reverse_volume_behavior">false</bool>
+
+    <integer name="config_navibarsize_default_cyanmobile">28</integer>
 </resources>
