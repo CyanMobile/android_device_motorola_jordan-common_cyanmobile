@@ -42,15 +42,16 @@ import android.widget.Toast;
 public class JordanUpdaterActivity extends Activity {
 	private static TextView textView;
 	private static TextView buttonTextView;
-	private static final String manifestURL = "https://raw.github.com/TaichiN/Jordan-ROM/gingerbread/README";
 	private static final String BUILD_VERSION = Build.VERSION.INCREMENTAL;
 	private static final String[] SEPARATED_DATE = BUILD_VERSION.split("\\.");
 	private static final long BUILD_DATE = Long.parseLong(SEPARATED_DATE[2] + SEPARATED_DATE[3]);
 	private static int ALREADY_CHECKED = 0;
 	private String theDate;
-	private static String theUrl;
 	private String theChangeLog = "";
 	private String romName;
+	private static String theUrl;
+    private static String deviceName;
+	private static String manifestURL;
 	private static String line;
 	private static String localFileName;
 	private static String theFileSize;
@@ -76,6 +77,8 @@ public class JordanUpdaterActivity extends Activity {
 		buttonTextView = (TextView) findViewById(R.id.JordanUpdaterButton);
 		buttonTextView.setVisibility(4);
 		alreadyDownloaded = false;
+        deviceName = getDeviceName().equals("jordan") ? "Jordan" : "Jordan_plus";
+        manifestURL = "https://raw.github.com/TaichiN/" + deviceName + "-ROM/gingerbread/README";
 		checkManifest();
 	}
 
@@ -513,4 +516,16 @@ public class JordanUpdaterActivity extends Activity {
 			}
 		}	
 	}
+
+    private static String getDeviceName() {
+        String devicename = "";
+        try {
+            Process ifc = Runtime.getRuntime().exec("getprop ro.cm.device");
+            BufferedReader bis = new BufferedReader(new InputStreamReader(ifc.getInputStream()));
+            devicename = bis.readLine();
+            ifc.destroy();
+        } catch (java.io.IOException e) {
+        }
+        return devicename;
+    }
 }
