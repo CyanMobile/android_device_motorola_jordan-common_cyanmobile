@@ -25,7 +25,8 @@ void board_reboot_hook(const char *reason, int *need_clear_reason)
 {
     int fd;
 
-    if (reason != NULL && strncmp(reason, "bppanic", 7) == 0) {
+    if ((reason != NULL && strncmp(reason, "bppanic", 7) == 0) || (
+            reason != NULL && strncmp(reason, "safemodes", 9) == 0)) {
         *need_clear_reason = 1;
         return;
     }
