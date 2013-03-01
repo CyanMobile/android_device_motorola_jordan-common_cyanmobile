@@ -83,6 +83,8 @@ PRODUCT_PACKAGES += \
 # Defy specfic apps
 PRODUCT_PACKAGES += \
 	DefyParts \
+	MotoFM \
+	MotoFMService \
 	Usb
 
 # Core stuff
